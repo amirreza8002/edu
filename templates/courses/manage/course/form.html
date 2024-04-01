@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {% if course %}
+    Edit course "{{ course.title }}"
+  {% else %}
+    Create a new course
+  {% endif %}
+{% endblock %}
+
+
+{% block content %}
+  <h1>
+  {% if course %}
+    Edit course"{{ course.title }}"
+  {% else %}
+    Create a new course
+  {% endif %}
+  </h1>
+  <div class="module">
+    <h2>course info</h2>
+    <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <p><button type="submit">Save course</button></p>
+    </form>
+  </div>
+{% endblock %}

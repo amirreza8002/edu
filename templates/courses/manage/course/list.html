@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>My courses</h1>
+  <div class="module">
+    {% for course in course_list %}
+      <div class="course-info">
+        <h3>{{ course.title }}</h3>
+        <p>
+          <a href="{% url "course_update" course.id %}">Edit</a>
+          <a href="{% url "course_delete" course.id %}">Delete</a>
+        </p>
+      </div>
+    {% empty %}
+      <p>You haven't created ay courses yet.</p>
+    {% endfor %}
+    <p>
+      <a href="{% url "course_create" %}" class="button">create new course</a>
+    </p>
+  </div>
+{% endblock %}
